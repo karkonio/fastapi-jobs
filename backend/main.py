@@ -3,7 +3,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from backend.core.config import settings
-from backend.apis.general_pages.route_homepage import general_pages_router
+from backend.apis.base import api_router
 from backend.db.session import engine
 from backend.db.base import Base
 
@@ -11,7 +11,7 @@ BASE_PATH = Path(__file__).resolve().parent
 
 
 def include_router(app):
-	app.include_router(general_pages_router)
+	app.include_router(api_router)
 
 
 def configure_static(app):
@@ -28,9 +28,6 @@ def create_tables():
 
 
 def start_application():
-	print(f'------THE settings : {settings.POSTGRES_USER} and {settings.POSTGRES_PASSWORD}')
-	print(f'------THE settings : {settings.POSTGRES_SERVER} and {settings.POSTGRES_PORT}')
-	print(f'------THE settings : {settings.POSTGRES_DB} and {settings.DATABASE_URL}')
 	app = FastAPI(
         title=settings.PROJECT_NAME,
         version=settings.PROJECT_VERSION
