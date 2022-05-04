@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from backend.core.config import settings
 from backend.apis.general_pages.route_homepage import general_pages_router
 from backend.db.session import engine
-from backend.db.base_class import Base
+from backend.db.base import Base
 
 BASE_PATH = Path(__file__).resolve().parent
 
@@ -14,7 +14,7 @@ def include_router(app):
 	app.include_router(general_pages_router)
 
 
-def configure_static(app):  #new
+def configure_static(app):
     app.mount(
 		"/static",
 		StaticFiles(directory=str(BASE_PATH / "static")),
@@ -22,7 +22,8 @@ def configure_static(app):  #new
 	)
 
 
-def create_tables():           #new
+def create_tables():
+	print("create_tables")
 	Base.metadata.create_all(bind=engine)
 
 
