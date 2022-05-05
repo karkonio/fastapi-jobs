@@ -12,6 +12,9 @@ class JobBase(BaseModel):
     description: Optional[str] = None
     date_posted: Optional[date] = datetime.now().date()
 
+    class Config:  # to convert non dict obj to json
+        orm_mode = True
+
 
 # this will be used to validate data while creating a Job
 class JobCreate(JobBase):

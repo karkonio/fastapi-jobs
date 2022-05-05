@@ -48,3 +48,20 @@ def test_read_all_jobs(client):
     assert response.status_code == 200
     assert response.json()[0]
     assert response.json()[1]
+
+
+def test_update_a_job(client):
+    data = {
+        "title": "Python developer",
+        "company": "DataArt",
+        "company_url": "dataart.kz",
+        "location": "Kazakhstan, Almaty",
+        "description": "python",
+        "date_posted": "2022-04-04",
+    }
+    client.post("/jobs/create-job/", json.dumps(data))
+
+    data["title"] = "Java developer"
+    response = client.put("/jobs/update/1", json.dumps(data))
+
+    assert response.json()["msg"] == "Successfully updated data."
