@@ -5,7 +5,7 @@ def test_create_user(client):
     data = {
         "username": "testuser",
         "email": "testuser@testing.com",
-        "password": "testing"
+        "password": "testing",
     }
     response = client.post("/users/", json.dumps(data))
 

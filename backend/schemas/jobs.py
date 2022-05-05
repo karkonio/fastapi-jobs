@@ -30,5 +30,5 @@ class ShowJob(JobBase):
     date_posted: date
     description: Optional[str]
 
-    class Config():  # to convert non dict obj to json
+    class Config:  # to convert non dict obj to json
         orm_mode = True

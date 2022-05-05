@@ -13,5 +13,5 @@ class ShowUser(BaseModel):
     email: EmailStr
     is_active: bool
 
-    class Config():  # tells pydantic to convert non dict obj to json
+    class Config:  # tells pydantic to convert non dict obj to json
         orm_mode = True

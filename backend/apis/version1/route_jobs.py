@@ -22,6 +22,6 @@ def read_job(id: int, db: Session = Depends(get_db)):
     if not job:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Job with id={id} does not exist."
+            detail=f"Job with id={id} does not exist.",
         )
     return job

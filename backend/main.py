@@ -16,9 +16,7 @@ def include_router(app):
 
 def configure_static(app):
     app.mount(
-        "/static",
-        StaticFiles(directory=str(BASE_PATH / "static")),
-        name="static"
+        "/static", StaticFiles(directory=str(BASE_PATH / "static")), name="static"
     )
 
 
@@ -28,10 +26,7 @@ def create_tables():
 
 
 def start_application():
-    app = FastAPI(
-        title=settings.PROJECT_NAME,
-        version=settings.PROJECT_VERSION
-    )
+    app = FastAPI(title=settings.PROJECT_NAME, version=settings.PROJECT_VERSION)
 
     include_router(app)
     configure_static(app)

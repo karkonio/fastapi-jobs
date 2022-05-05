@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-#this is to include backend dir in sys.path so that we can import from db,main.py
+# this is to include backend dir in sys.path so that we can import from db,main.py
 
 from backend.db.base import Base
 from backend.db.session import get_db
@@ -54,8 +54,8 @@ def db_session(app: FastAPI) -> Generator[SessionTesting, Any, None]:
 
 @pytest.fixture(scope="function")
 def client(
-        app: FastAPI, db_session: SessionTesting
-    ) -> Generator[TestClient, Any, None]:
+    app: FastAPI, db_session: SessionTesting
+) -> Generator[TestClient, Any, None]:
     """
     Create a new FastAPI TestClient that uses the `db_session` fixture to override
     the `get_db` dependency that is injected into routes.
